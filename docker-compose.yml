@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+
+  to-do-tasks-app:
+    image: to-do-tasks-app:0.0.1-SNAPSHOT
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "9080:9080"
+    depends_on:
+      - redis-db
+      - h2-db
+
+  redis-db:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  h2-db:
+    image: oscarfonts/h2
+    ports:
+      - "1521:1521"
+      - "81:81"
+    volumes:
+      - h2:/opt/h2-data
+
+volumes:
+  h2:
+    driver: local
