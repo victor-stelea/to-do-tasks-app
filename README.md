@@ -34,3 +34,8 @@
       ![task-id](https://github.com/victor-stelea/to-do-tasks-app/blob/master/screenshots/task-id.png)
    4. Return a 404NotFound when searching for a non-existing TO-DO task
       ![task-404](https://github.com/victor-stelea/to-do-tasks-app/blob/master/screenshots/task-404.png)
+      
+ ### TODO:
+ 1. Add logging
+ 2. Add Unit tests
+ 3. Add JDocs
